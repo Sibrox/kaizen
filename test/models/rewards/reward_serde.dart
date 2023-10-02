@@ -9,7 +9,7 @@ void main() {
       {
         "title": "Reward",
         "description": "Description",
-        "price": 9.00,
+        "price": 100,
         "rating": 2
       }
     ''';
@@ -17,20 +17,20 @@ void main() {
     Map<String, dynamic> jsonReward = jsonDecode(strReward);
     var reward = Reward.fromJson(jsonReward);
 
-    assert(reward.title == jsonReward["title"]);
-    assert(reward.description == jsonReward["description"]);
-    assert(reward.price == jsonReward["price"]);
-    assert(reward.rating == jsonReward["rating"]);
+    assert(reward.title == "Reward");
+    assert(reward.description == "Description");
+    assert(reward.price == 100);
+    assert(reward.rating == 2);
   });
 
   test('Test reward deserialization', () {
     const reward = Reward(
-        title: "Reward", description: "Description", price: 9.00, rating: 2);
+        title: "Reward", description: "Description", price: 100, rating: 2);
     var jsonReward = reward.toJson();
 
-    assert(reward.title == jsonReward["title"]);
-    assert(reward.description == jsonReward["description"]);
-    assert(reward.price == jsonReward["price"]);
-    assert(reward.rating == jsonReward["rating"]);
+    assert(jsonReward["title"] == "Reward");
+    assert(reward.description == "Description");
+    assert(reward.price == 100);
+    assert(reward.rating == 2);
   });
 }

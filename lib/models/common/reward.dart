@@ -9,7 +9,7 @@ class Reward {
 
   final String title;
   final String description;
-  final double price;
+  final int price;
   final int rating;
 
   const Reward(

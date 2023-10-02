@@ -9,7 +9,7 @@ part of '../common/reward.dart';
 Reward _$RewardFromJson(Map<String, dynamic> json) => Reward(
       title: json['title'] as String,
       description: json['description'] as String,
-      price: (json['price'] as num).toDouble(),
+      price: (json['price'] as num).toInt(),
       rating: json['rating'] as int,
     );
 
