@@ -29,8 +29,8 @@ void main() {
     var jsonReward = reward.toJson();
 
     assert(jsonReward["title"] == "Reward");
-    assert(reward.description == "Description");
-    assert(reward.price == 100);
-    assert(reward.rating == 2);
+    assert(jsonReward["description"] == "Description");
+    assert(jsonReward["price"] == 100);
+    assert(jsonReward["rating"] == 2);
   });
 }
