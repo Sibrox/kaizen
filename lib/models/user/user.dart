@@ -4,7 +4,7 @@ import 'package:kaizen/models/common/reward.dart';
 part 'user.g.dart';
 
 @JsonSerializable()
-class User{
+class User {
   final int credits;
   final List<Reward> rewardsHistory = [];
   // TODO: add tasksHistory when Task model exists
@@ -13,9 +13,11 @@ class User{
     rewardsHistory = rewardsHistory ?? [];
   }
 
-  factory User.fromJson(Map<String, dynamic> json) =>
-      _$UserFromJson(json);
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
-  Map<String, dynamic> toJson(User user) => 
-      _$UserToJson(user);
+  Map<String, dynamic> toJson(User user) => _$UserToJson(user);
+
+  addReward(Reward reward) {
+    rewardsHistory.add(reward);
+  }
 }
