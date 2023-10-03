@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'main_question.g.dart';
@@ -6,7 +7,7 @@ part 'main_question.g.dart';
 class MainQuestion{
 
   final String? text;
-  final bool? value;
+  bool? value;
 
   MainQuestion({this.text, this.value});
 

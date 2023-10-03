@@ -1,4 +1,4 @@
-part of 'main_question_bloc.dart';
+part of 'main_survey_bloc.dart';
 
 abstract class MainQuestionEvent {
 
@@ -8,5 +8,7 @@ abstract class MainQuestionEvent {
 
 class EventToggleMainQuestion extends MainQuestionEvent{
 
-  const EventToggleMainQuestion();
+  int index;
+
+  EventToggleMainQuestion(this.index);
 }

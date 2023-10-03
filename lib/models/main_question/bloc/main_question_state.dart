@@ -1,12 +1,10 @@
-part of 'main_question_bloc.dart';
+part of 'main_survey_bloc.dart';
 
-class MainQuestionState extends Equatable {
+class MainQuestionState {
 
-  final MainQuestion mainQuestion;
+  final List<MainQuestion> mainQuestions;
 
-  const MainQuestionState(this.mainQuestion);
+  const MainQuestionState(this.mainQuestions);
 
-  @override
-  List<Object> get props => [mainQuestion];
 }
 

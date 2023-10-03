@@ -1,44 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kaizen/models/main_question/bloc/main_survey_bloc.dart';
 import 'package:kaizen/models/main_question/main_question.dart';
-import 'dart:convert';
 
-class MainSurvey extends StatefulWidget {
-  const MainSurvey({super.key});
+class MainSurveyWidget extends StatelessWidget {
 
-  @override
-  State<MainSurvey> createState() => _MainSurveyState();
-}
-
-class _MainSurveyState extends State<MainSurvey> {
-
- List<MainQuestion> mainQuestions = List.empty(growable: true);
-
-  Future<void> initializeQuestions() async {
-
-    String json = await DefaultAssetBundle.of(context).loadString("assets/jsons/main_questions.json");
-    List<dynamic> questions = jsonDecode(json);
-
-    for(var question in questions){
-      setState(() {
-        mainQuestions.add(MainQuestion.fromJson(question));
-      });
-
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    initializeQuestions();
-  }
+  MainSurveyWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  ListView.builder(
-      itemCount: mainQuestions.length,
-      itemBuilder: (BuildContext context, int index){
+    return  BlocBuilder<MainSurveyBloc,MainQuestionState>(
+      builder: (context,state){
+        return ListView.builder(
+          itemCount: state.mainQuestions.length,
+          itemBuilder: (BuildContext context, int index){
+            return Row(
+              children: [
+                Text("${state.mainQuestions[index].text}"),
+                GestureDetector(
+                  child: Text("${state.mainQuestions[index].value}"),
+                  onTap: (){
 
-        return Text("${mainQuestions[index].text} ${mainQuestions[index].value}");
+                    context.read<MainSurveyBloc>().add(EventToggleMainQuestion(index));
+                  },
+                )
+              ],
+            );
+          },
+        );
       },
     );
   }
