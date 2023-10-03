@@ -5,7 +5,7 @@ part 'reward.g.dart';
 class Reward {
 
   static const maxRating = 5;
-  static const mixRating = 0;
+  static const minRating = 0;
 
   final String title;
   final String description;
