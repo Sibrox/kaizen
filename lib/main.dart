@@ -2,9 +2,11 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kaizen/models/main_question/bloc/main_survey_bloc.dart';
-import 'package:kaizen/models/main_question/main_question.dart';
+
 import 'package:kaizen/screens/main_survey.dart';
+
+import 'models/main_survey/bloc/main_survey_bloc.dart';
+import 'models/main_survey/main_question.dart';
 
 void main() {
   runApp(const Kaizen());
@@ -57,7 +59,7 @@ class _KaizenState extends State<Kaizen> {
                   create: (BuildContext context) =>
                       MainSurveyBloc(mainQuestions)),
             ],
-            child: MainSurveyWidget(),
+            child: const MainSurveyWidget(),
           ),
         ),
       );
