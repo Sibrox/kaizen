@@ -18,16 +18,15 @@ class Kaizen extends StatefulWidget {
 }
 
 class _KaizenState extends State<Kaizen> {
-
   bool isLoading = true;
   List<MainQuestion> mainQuestions = [];
 
   Future<void> initializeQuestions() async {
-
-    String json = await DefaultAssetBundle.of(context).loadString("assets/jsons/main_questions.json");
+    String json = await DefaultAssetBundle.of(context)
+        .loadString("assets/jsons/main_questions.json");
     List<dynamic> questions = jsonDecode(json);
 
-    for(var question in questions){
+    for (var question in questions) {
       mainQuestions.add(MainQuestion.fromJson(question));
     }
 
@@ -38,15 +37,13 @@ class _KaizenState extends State<Kaizen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     initializeQuestions();
   }
 
   @override
   Widget build(BuildContext context) {
-
-    if(!isLoading){
+    if (!isLoading) {
       return MaterialApp(
         title: 'Kaizen',
         theme: ThemeData(
@@ -56,13 +53,15 @@ class _KaizenState extends State<Kaizen> {
         home: Scaffold(
           body: MultiBlocProvider(
             providers: [
-              BlocProvider(create: (BuildContext context) => MainSurveyBloc(mainQuestions)),
-            ], child: MainSurveyWidget(),
+              BlocProvider(
+                  create: (BuildContext context) =>
+                      MainSurveyBloc(mainQuestions)),
+            ],
+            child: MainSurveyWidget(),
           ),
         ),
       );
-    }
-    else{
+    } else {
       return MaterialApp(
         title: 'Kaizen',
         theme: ThemeData(
@@ -70,10 +69,9 @@ class _KaizenState extends State<Kaizen> {
           useMaterial3: true,
         ),
         home: const Scaffold(
-          body: Text("Sto caricando"),
-        ),
+            body: Text("Sto caricando") //TODO: implement the loading screen,
+            ),
       );
     }
-
   }
 }
