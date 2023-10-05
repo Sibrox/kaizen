@@ -1,9 +1,11 @@
 import 'package:bloc/bloc.dart';
-import 'package:kaizen/models/main_question/main_question.dart';
+import 'package:flutter/foundation.dart';
+import '../main_question.dart';
+import 'package:collection/collection.dart';
 
-part 'main_question_event.dart';
+part 'main_survey_event.dart';
 
-part 'main_question_state.dart';
+part 'main_survey_state.dart';
 
 class MainSurveyBloc extends Bloc<MainQuestionEvent, MainQuestionState> {
   MainSurveyBloc(List<MainQuestion> mainQuestions)

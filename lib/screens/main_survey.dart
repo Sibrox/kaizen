@@ -2,9 +2,10 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kaizen/models/main_question/bloc/main_survey_bloc.dart';
-import 'package:kaizen/models/main_question/view/main_question_widget.dart';
 import 'package:blur/blur.dart';
+
+import '../models/main_survey/bloc/main_survey_bloc.dart';
+import '../models/main_survey/view/main_question_widget.dart';
 
 class MainSurveyWidget extends StatelessWidget {
   const MainSurveyWidget({super.key});

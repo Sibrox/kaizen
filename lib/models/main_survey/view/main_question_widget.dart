@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kaizen/models/main_question/bloc/main_survey_bloc.dart';
-import 'package:kaizen/models/main_question/main_question.dart';
+
+import '../bloc/main_survey_bloc.dart';
+import '../main_question.dart';
 
 class MainQuestionWidget extends StatelessWidget {
   final int index;
