@@ -45,5 +45,26 @@ void main() {
           MainQuestionState assertState = MainQuestionState(mainQuestions);
           return [assertState];
         });
+
+    blocTest("Toggle question two times", build: () {
+      List<MainQuestion> mainQuestions = [
+        MainQuestion(text: "Test", value: false),
+        MainQuestion(text: "Altro", value: false)
+      ];
+      return MainSurveyBloc(mainQuestions);
+    }, act: (bloc) {
+      bloc.add(EventToggleMainQuestion(1));
+      bloc.add(EventToggleMainQuestion(1));
+    }, expect: () {
+      List<MainQuestion> firstState = [
+        MainQuestion(text: "Test", value: false),
+        MainQuestion(text: "Altro", value: true),
+      ];
+      List<MainQuestion> secondState = [
+        MainQuestion(text: "Test", value: false),
+        MainQuestion(text: "Altro", value: false),
+      ];
+      return [MainQuestionState(firstState), MainQuestionState(secondState)];
+    });
   });
 }

@@ -2,8 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:blur/blur.dart';
-
+import 'package:kaizen/models/main_survey/main_question.dart';
 import '../models/main_survey/bloc/main_survey_bloc.dart';
 import '../models/main_survey/view/main_question_widget.dart';
 
@@ -47,6 +46,30 @@ class MainSurveyWidget extends StatelessWidget {
                 return const Divider();
               },
             ),
+            Positioned(
+              bottom: 15,
+              right: (MediaQuery.of(context).size.width - 100) / 2,
+              child: GestureDetector(
+                onTap: () {
+                  List<String?> questionForSecondSurvey = [];
+                  for (MainQuestion question in state.mainQuestions) {
+                    question.value == true
+                        ? questionForSecondSurvey.add(question.text)
+                        : null;
+                  }
+                  //TODO: pass questionForSecondSurvey for build the second survey screen
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  width: 100,
+                  height: 40,
+                  decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      color: Colors.blueAccent),
+                  child: const Text("Avanti"),
+                ),
+              ),
+            )
           ],
         );
       },
