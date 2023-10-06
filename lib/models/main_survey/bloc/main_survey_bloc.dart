@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import '../main_question.dart';
-import 'package:collection/collection.dart';
 
 part 'main_survey_event.dart';
 
@@ -12,7 +11,9 @@ class MainSurveyBloc extends Bloc<MainQuestionEvent, MainQuestionState> {
       : super(MainQuestionState(mainQuestions)) {
     on<EventToggleMainQuestion>((event, emit) {
       List<MainQuestion> newState = List.from(state.mainQuestions);
-      newState[event.index].value = !newState[event.index].value!;
+      newState[event.index] = MainQuestion(
+          text: newState[event.index].text,
+          value: !newState[event.index].value);
       emit(MainQuestionState(newState));
     });
     on<EventAddQuestion>((event, emit) {

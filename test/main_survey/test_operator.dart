@@ -11,10 +11,8 @@ void main() {
       MainQuestion(text: "Vuoi dimagrire?", value: true)
     ];
 
-    MainQuestionState state1 = MainQuestionState(mainQuestions1);
-    MainQuestionState state2 = MainQuestionState(mainQuestions2);
-
-    expect(state1 == state2, false);
+    assert(
+        MainQuestionState(mainQuestions1) != MainQuestionState(mainQuestions2));
   });
 
   test("Test same mainQuestionState", () {
@@ -22,9 +20,8 @@ void main() {
       MainQuestion(text: "Vuoi dimagrire?", value: false)
     ];
 
-    MainQuestionState state1 = MainQuestionState(mainQuestions1);
-
-    expect(state1 == state1, true);
+    MainQuestionState state = MainQuestionState(mainQuestions1);
+    assert(state == state);
   });
 
   test("Test two different mainQuestionState with the same value", () {
@@ -36,9 +33,7 @@ void main() {
       MainQuestion(text: "Vuoi dimagrire?", value: false)
     ];
 
-    MainQuestionState state1 = MainQuestionState(mainQuestions1);
-    MainQuestionState state3 = MainQuestionState(mainQuestions2);
-
-    expect(state1 == state3, true);
+    assert(
+        MainQuestionState(mainQuestions1) == MainQuestionState(mainQuestions2));
   });
 }

@@ -3,29 +3,17 @@ import 'package:test/test.dart';
 
 void main() {
   test("Test two different mainQuestion's values", () {
-    MainQuestion mainQuestion1 =
-        MainQuestion(text: "Vuoi dimagrire?", value: false);
-    MainQuestion mainQuestion2 =
-        MainQuestion(text: "Vuoi dimagrire?", value: true);
-
-    expect(mainQuestion1 == mainQuestion2, false);
+    assert(MainQuestion(text: "Vuoi dimagrire?", value: false) !=
+        MainQuestion(text: "Vuoi dimagrire?", value: true));
   });
 
   test("Test two different mainQuestion's texts", () {
-    MainQuestion mainQuestion1 =
-        MainQuestion(text: "Vuoi dimagrire?", value: false);
-    MainQuestion mainQuestion2 =
-        MainQuestion(text: "Vuoi dimagrire?", value: true);
-
-    expect(mainQuestion1 == mainQuestion2, false);
+    assert(MainQuestion(text: "Vuoi mettere massa?", value: true) !=
+        MainQuestion(text: "Vuoi dimagrire?", value: true));
   });
 
   test("Test same mainQuestions", () {
-    MainQuestion mainQuestion1 =
-        MainQuestion(text: "Vuoi dimagrire?", value: false);
-    MainQuestion mainQuestion3 =
-        MainQuestion(text: "Vuoi dimagrire?", value: false);
-
-    expect(mainQuestion1 == mainQuestion3, true);
+    assert(MainQuestion(text: "Vuoi dimagrire?", value: false) ==
+        MainQuestion(text: "Vuoi dimagrire?", value: false));
   });
 }

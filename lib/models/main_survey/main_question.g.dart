@@ -7,8 +7,8 @@ part of 'main_question.dart';
 // **************************************************************************
 
 MainQuestion _$MainQuestionFromJson(Map<String, dynamic> json) => MainQuestion(
-      text: json['text'] as String?,
-      value: json['value'] as bool?,
+      text: json['text'] as String,
+      value: json['value'] as bool,
     );
 
 Map<String, dynamic> _$MainQuestionToJson(MainQuestion instance) =>

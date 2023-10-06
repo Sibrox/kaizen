@@ -4,10 +4,10 @@ part 'main_question.g.dart';
 
 @JsonSerializable()
 class MainQuestion {
-  final String? text;
-  bool? value;
+  final String text;
+  bool value;
 
-  MainQuestion({this.text, this.value});
+  MainQuestion({required this.text, required this.value});
 
   factory MainQuestion.fromJson(Map<String, dynamic> json) =>
       _$MainQuestionFromJson(json);
@@ -15,7 +15,7 @@ class MainQuestion {
   Map<String, dynamic> toJson() => _$MainQuestionToJson(this);
 
   MainQuestion createToggle() {
-    return MainQuestion(text: text, value: !value!);
+    return MainQuestion(text: text, value: value);
   }
 
   @override
