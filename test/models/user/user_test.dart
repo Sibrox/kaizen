@@ -22,22 +22,23 @@ void main() {
 
   test('Test reward deserialization', () {
     var user = User(credits: 150, rewardsHistory: []);
-    var jsonReward = user.toJson(user);
+    var jsonReward = user.toJson();
 
     assert(jsonReward["credits"] == 150);
     assert(jsonReward["rewardsHistory"].isEmpty);
   });
 
   test('Test add reward to User rewardsHistory', () {
-    var user = User(credits: 150);
+    var user = User(credits: 150, rewardsHistory: []);
     assert(user.rewardsHistory.isEmpty);
 
     const newReward = Reward(
         title: "New Reward", description: "Description", price: 100, rating: 2);
-    user.addReward(newReward);
-    assert(user.rewardsHistory.length == 1);
 
-    var reward = user.rewardsHistory[0];
+    var updatedUser = User.buyReward(user, newReward);
+    assert(updatedUser.rewardsHistory.length == 1);
+
+    var reward = updatedUser.rewardsHistory[0];
     assert(reward.title == newReward.title);
     assert(reward.description == newReward.description);
     assert(reward.price == newReward.price);
