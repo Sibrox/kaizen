@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:kaizen/models/common/reward.dart';
+import 'package:kaizen/models/common/reward/reward.dart';
 import 'package:test/test.dart';
 
 void main() {
