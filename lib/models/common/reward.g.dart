@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of '../common/reward.dart';
+part of 'reward.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
