@@ -3,7 +3,6 @@ part 'reward.g.dart';
 
 @JsonSerializable()
 class Reward {
-
   static const maxRating = 5;
   static const minRating = 0;
 
@@ -18,8 +17,7 @@ class Reward {
       required this.price,
       required this.rating});
 
-  factory Reward.fromJson(Map<String, dynamic> json) =>
-      _$RewardFromJson(json);
+  factory Reward.fromJson(Map<String, dynamic> json) => _$RewardFromJson(json);
 
   Map<String, dynamic> toJson() => _$RewardToJson(this);
 }
