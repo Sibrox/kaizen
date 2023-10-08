@@ -26,7 +26,9 @@ class User {
 
   @override
   bool operator ==(Object other) {
-    return other is User && listEquals(rewardsHistory, other.rewardsHistory);
+    return other is User &&
+        credits == other.credits &&
+        listEquals(rewardsHistory, other.rewardsHistory);
   }
 
   @override

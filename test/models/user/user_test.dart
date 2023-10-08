@@ -5,7 +5,7 @@ import 'package:kaizen/models/user/user.dart';
 import 'package:test/test.dart';
 
 void main() {
-  test('Test reward serialization', () {
+  test('Test user serialization', () {
     const strUser = '''
       {
         "credits": 150,
@@ -20,12 +20,30 @@ void main() {
     assert(user.rewardsHistory.isEmpty);
   });
 
-  test('Test reward deserialization', () {
+  test('Test user deserialization', () {
     var user = User(credits: 150, rewardsHistory: []);
     var jsonReward = user.toJson();
 
     assert(jsonReward["credits"] == 150);
     assert(jsonReward["rewardsHistory"].isEmpty);
+  });
+
+  test('Test user equal', () {
+    const reward = Reward(title: "Test", price: 150, rating: 2);
+    var user1 = User(credits: 150, rewardsHistory: [reward]);
+    var user2 = User(credits: 150, rewardsHistory: [reward]);
+
+    assert(user1 == user2);
+  });
+
+  test('Test user not equal', () {
+    const reward = Reward(title: "Test", price: 150, rating: 2);
+    var user1 = User(credits: 150, rewardsHistory: [reward]);
+    var user2 = User(credits: 130, rewardsHistory: [reward]);
+    var user3 = User(credits: 130, rewardsHistory: []);
+
+    assert(user1 != user2);
+    assert(user2 != user3);
   });
 
   test('Test add reward to User rewardsHistory', () {
