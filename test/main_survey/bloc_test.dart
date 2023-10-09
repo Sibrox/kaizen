@@ -30,11 +30,12 @@ void main() {
 
     blocTest("AddQuestionEvent",
         build: () {
-          List<MainQuestion> mainQuestions = [];
-          mainQuestions.add(MainQuestion(text: "Test", value: false));
-          mainQuestions.add(MainQuestion(text: "Altro", value: false));
-          MainSurveyBloc surveyBloc = MainSurveyBloc(mainQuestions);
-          return surveyBloc;
+          List<MainQuestion> mainQuestions = [
+            MainQuestion(text: "Test", value: false),
+            MainQuestion(text: "Altro", value: false)
+          ];
+          
+          return MainSurveyBloc(mainQuestions);
         },
         act: (bloc) => bloc.add(EventAddQuestion("AddedTest")),
         expect: () {
