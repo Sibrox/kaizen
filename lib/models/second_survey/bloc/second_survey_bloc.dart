@@ -1,13 +1,10 @@
-import 'dart:async';
 import 'dart:convert';
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../question.dart';
 
 part 'second_survey_event.dart';
-
 part 'second_survey_state.dart';
 
 class SecondSurveyBloc extends Bloc<SecondSurveyEvent, SecondSurveyState> {
@@ -28,6 +25,22 @@ class SecondSurveyBloc extends Bloc<SecondSurveyEvent, SecondSurveyState> {
       }
 
       emit(SecondSurveyState(secondSurvey));
+    });
+    on<EventSelectQuestions>((event, emit) {
+      Map<String, List<Question>> newState = Map.from(state.secondQuestions);
+      newState
+          .removeWhere((key, value) => !event.selectedQuestions.contains(key));
+      emit(SecondSurveyState(newState));
+    });
+    on<EventChangeValue>((event, emit) {
+      Map<String, List<Question>> newState = Map.fromEntries(state
+          .secondQuestions.entries
+          .map((entry) => MapEntry(entry.key, List.from(entry.value))));
+      Question newQuestion = state.secondQuestions[event.key]![event.index]
+          .copyWith(value: event.value);
+
+      newState[event.key]![event.index] = newQuestion;
+      emit(SecondSurveyState(newState));
     });
   }
 }

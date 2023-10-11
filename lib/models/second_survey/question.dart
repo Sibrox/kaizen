@@ -16,6 +16,22 @@ class Question extends Equatable {
       this.divisions = 1,
       this.value = 0});
 
+  factory Question.fromQuestion(Question question, int value) {
+    return Question(
+        text: question.text,
+        max: question.max,
+        divisions: question.divisions,
+        value: value);
+  }
+
+  Question copyWith({text, max, divisions, value}) {
+    return Question(
+        text: text ?? this.text,
+        max: max ?? this.max,
+        divisions: divisions ?? this.divisions,
+        value: value ?? this.value);
+  }
+
   factory Question.fromJson(Map<String, dynamic> json) =>
       _$QuestionFromJson(json);
 
