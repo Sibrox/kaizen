@@ -1,13 +1,13 @@
 part of 'main_survey_bloc.dart';
 
-class MainQuestionState {
+class MainSurveyState {
   final List<MainQuestion> mainQuestions;
 
-  const MainQuestionState(this.mainQuestions);
+  MainSurveyState(this.mainQuestions);
 
   @override
   bool operator ==(Object other) {
-    return other is MainQuestionState &&
+    return other is MainSurveyState &&
         listEquals(mainQuestions, other.mainQuestions);
   }
 

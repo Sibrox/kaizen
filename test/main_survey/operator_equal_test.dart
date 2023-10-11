@@ -11,8 +11,7 @@ void main() {
       MainQuestion(text: "Vuoi dimagrire?", value: true)
     ];
 
-    assert(
-        MainQuestionState(mainQuestions1) != MainQuestionState(mainQuestions2));
+    assert(MainSurveyState(mainQuestions1) != MainSurveyState(mainQuestions2));
   });
 
   test("Test same mainQuestionState", () {
@@ -20,7 +19,7 @@ void main() {
       MainQuestion(text: "Vuoi dimagrire?", value: false)
     ];
 
-    MainQuestionState state = MainQuestionState(mainQuestions1);
+    MainSurveyState state = MainSurveyState(mainQuestions1);
     assert(state == state);
   });
 
@@ -33,7 +32,6 @@ void main() {
       MainQuestion(text: "Vuoi dimagrire?", value: false)
     ];
 
-    assert(
-        MainQuestionState(mainQuestions1) == MainQuestionState(mainQuestions2));
+    assert(MainSurveyState(mainQuestions1) == MainSurveyState(mainQuestions2));
   });
 }

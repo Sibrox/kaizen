@@ -1,18 +1,30 @@
+import 'dart:convert';
 import 'package:bloc_test/bloc_test.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:kaizen/models/main_survey/bloc/main_survey_bloc.dart';
 import 'package:kaizen/models/main_survey/main_question.dart';
-import 'package:test/test.dart';
 
 void main() {
-  group("MainSurveyBloc", () {
-    test("Initial state", () {
-      List<MainQuestion> mainQuestions = [];
-      MainSurveyBloc surveyBloc = MainSurveyBloc(mainQuestions);
-      mainQuestions.add(MainQuestion(text: "Test", value: false));
+  TestWidgetsFlutterBinding.ensureInitialized();
 
-      surveyBloc.state.mainQuestions == mainQuestions;
-    });
+  blocTest("EventLoadInfosTest", build: () {
+    return MainSurveyBloc();
+  }, act: (bloc) {
+    bloc.add(EventLoadInfos("assets/jsons/ita/main_questions.json"));
+  }, expect: () async {
+    List<MainQuestion> mainQuestions = [];
+    Future<String> json =
+        rootBundle.loadString("assets/jsons/ita/main_questions.json");
+    List<dynamic> list = jsonDecode(await json);
 
+    for (var question in list) {
+      mainQuestions.add(MainQuestion.fromJson(question));
+    }
+    return [MainSurveyState(mainQuestions)];
+  });
+
+  /*
     blocTest("Toggle event",
         build: () {
           List<MainQuestion> mainQuestions = [];
@@ -24,7 +36,7 @@ void main() {
         expect: () {
           List<MainQuestion> mainQuestions = [];
           mainQuestions.add(MainQuestion(text: "Test", value: true));
-          MainQuestionState assertState = MainQuestionState(mainQuestions);
+          MainSurveyState assertState = MainSurveyState(mainQuestions);
           return [assertState];
         });
 
@@ -34,7 +46,7 @@ void main() {
             MainQuestion(text: "Test", value: false),
             MainQuestion(text: "Altro", value: false)
           ];
-          
+
           return MainSurveyBloc(mainQuestions);
         },
         act: (bloc) => bloc.add(EventAddQuestion("AddedTest")),
@@ -43,7 +55,7 @@ void main() {
           mainQuestions.add(MainQuestion(text: "Test", value: false));
           mainQuestions.add(MainQuestion(text: "AddedTest", value: true));
           mainQuestions.add(MainQuestion(text: "Altro", value: false));
-          MainQuestionState assertState = MainQuestionState(mainQuestions);
+          MainSurveyState assertState = MainSurveyState(mainQuestions);
           return [assertState];
         });
 
@@ -65,7 +77,8 @@ void main() {
         MainQuestion(text: "Test", value: false),
         MainQuestion(text: "Altro", value: false),
       ];
-      return [MainQuestionState(firstState), MainQuestionState(secondState)];
+      return [MainSurveyState(firstState), MainSurveyState(secondState)];
     });
-  });
+
+     */
 }

@@ -15,3 +15,9 @@ class EventAddQuestion extends MainQuestionEvent {
 
   EventAddQuestion(this.text);
 }
+
+class EventLoadInfos extends MainQuestionEvent {
+  String path;
+
+  EventLoadInfos(this.path);
+}

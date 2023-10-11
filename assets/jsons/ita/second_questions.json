@@ -1,0 +1,35 @@
+{
+  "Vuoi smettere di fumare?": [
+    {
+      "text": "Quante sigarette fumi al giorno circa?",
+      "max": 40,
+      "divisions": 8
+    },
+    {
+      "text": "Domande utile",
+      "max": 5
+    }
+  ],
+  "Vuoi regolarizzare la masturbazione?": [
+    {
+      "text": "Quanto frequentemente ti masturbi al giorno?",
+      "max": 5
+    },
+    {
+      "text": "Domande utile",
+      "max": 5
+    }
+  ],
+  "Vuoi passare meno tempo al telefono?": [
+    {
+      "text": "Quante ore passi al telefono",
+      "max": 10,
+      "divisions": 5
+    },
+    {
+      "text": "Quante ore sui socials?",
+      "max": 10,
+      "divisions": 5
+    }
+  ]
+}
