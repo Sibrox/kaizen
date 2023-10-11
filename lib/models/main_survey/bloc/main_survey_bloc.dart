@@ -34,6 +34,6 @@ class MainSurveyBloc extends Bloc<MainQuestionEvent, MainSurveyState> {
       }
 
       emit(MainSurveyState(mainQuestions));
-    });
+    },);
   }
 }
