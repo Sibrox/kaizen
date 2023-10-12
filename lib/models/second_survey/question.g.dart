@@ -8,9 +8,10 @@ part of 'question.dart';
 
 Question _$QuestionFromJson(Map<String, dynamic> json) => Question(
       text: json['text'] as String,
-      max: json['max'] as int,
+      max: (json['max'] as num).toDouble(),
+      index: json['index'] as int,
       divisions: json['divisions'] as int? ?? 1,
-      value: json['value'] as int? ?? 0,
+      value: (json['value'] as num?)?.toDouble() ?? 0,
     );
 
 Map<String, dynamic> _$QuestionToJson(Question instance) => <String, dynamic>{
@@ -18,4 +19,5 @@ Map<String, dynamic> _$QuestionToJson(Question instance) => <String, dynamic>{
       'value': instance.value,
       'max': instance.max,
       'divisions': instance.divisions,
+      'index': instance.index,
     };

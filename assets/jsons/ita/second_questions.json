@@ -3,33 +3,39 @@
     {
       "text": "Quante sigarette fumi al giorno circa?",
       "max": 40,
-      "divisions": 8
+      "divisions": 8,
+      "index": 0
     },
     {
       "text": "Domande utile",
-      "max": 5
+      "max": 5,
+      "index": 1
     }
   ],
   "Vuoi regolarizzare la masturbazione?": [
     {
       "text": "Quanto frequentemente ti masturbi al giorno?",
-      "max": 5
+      "max": 5,
+      "index": 0
     },
     {
       "text": "Domande utile",
-      "max": 5
+      "max": 5,
+      "index": 1
     }
   ],
   "Vuoi passare meno tempo al telefono?": [
     {
       "text": "Quante ore passi al telefono",
       "max": 10,
-      "divisions": 5
+      "divisions": 5,
+      "index": 0
     },
     {
       "text": "Quante ore sui socials?",
       "max": 10,
-      "divisions": 5
+      "divisions": 5,
+      "index": 1
     }
   ]
 }

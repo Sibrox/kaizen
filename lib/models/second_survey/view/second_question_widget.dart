@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kaizen/models/second_survey/bloc/second_survey_bloc.dart';
+import '../question.dart';
 
 class SecondQuestionWidget extends StatelessWidget {
   final String mapKey;
-  final String text;
-  final int index;
-  final int value;
+  final Question question;
 
   const SecondQuestionWidget(
-      {super.key,
-      required this.mapKey,
-      required this.index,
-      required this.value,
-      required this.text});
+      {super.key, required this.mapKey, required this.question});
 
   @override
   Widget build(BuildContext context) {
@@ -23,20 +18,31 @@ class SecondQuestionWidget extends StatelessWidget {
             borderRadius: const BorderRadius.all(Radius.circular(20)),
             color: Colors.black.withAlpha(15)),
         padding: const EdgeInsetsDirectional.only(start: 10, end: 10),
+        margin: const EdgeInsetsDirectional.only(top: 10, start: 10),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Text(
-              text,
-              style: const TextStyle(color: Colors.white),
+            Expanded(
+              flex: 10,
+              child: Text(
+                question.text,
+                style: const TextStyle(color: Colors.white),
+              ),
             ),
-            Slider(
-              value: value as double,
-              onChanged: (double value) {
-                BlocProvider.of<SecondSurveyBloc>(context).add(EventChangeValue(
-                    key: mapKey, value: value as int, index: index));
-              },
-            )
+            Expanded(
+              flex: 7,
+              child: Slider(
+                value: question.value,
+                max: question.max,
+                divisions: question.divisions,
+                onChanged: (double value) {
+                  BlocProvider.of<SecondSurveyBloc>(context).add(
+                      EventChangeValue(
+                          key: mapKey, value: value, index: question.index));
+                },
+              ),
+            ),
+            Expanded(flex: 1, child: Text("${question.value}")),
           ],
         ));
   }

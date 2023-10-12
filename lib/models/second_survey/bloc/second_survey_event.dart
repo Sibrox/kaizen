@@ -5,9 +5,10 @@ abstract class SecondSurveyEvent {}
 class EventChangeValue extends SecondSurveyEvent {
   String key;
   int index;
-  int value;
+  double value;
 
-  EventChangeValue({required this.key,required this.index,required this.value});
+  EventChangeValue(
+      {required this.key, required this.index, required this.value});
 }
 
 class EventLoadSecondSurvey extends SecondSurveyEvent {

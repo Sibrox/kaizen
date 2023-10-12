@@ -1,7 +1,11 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kaizen/models/main_survey/main_question.dart';
+import 'package:kaizen/screens/second_survey.dart';
+import 'package:kaizen/screens/waiting_screen.dart';
 import '../models/main_survey/view/main_question_widget.dart';
+import '../models/second_survey/bloc/second_survey_bloc.dart';
 
 class MainSurveyWidget extends StatelessWidget {
   final List<MainQuestion> mainQuestions;
@@ -46,13 +50,35 @@ class MainSurveyWidget extends StatelessWidget {
           right: (MediaQuery.of(context).size.width - 100) / 2,
           child: GestureDetector(
             onTap: () {
-              List<String?> questionForSecondSurvey = [];
+              List<String> questionForSecondSurvey = [];
               for (MainQuestion question in mainQuestions) {
                 question.value == true
                     ? questionForSecondSurvey.add(question.text)
                     : null;
               }
-              //TODO: pass questionForSecondSurvey for build the second survey screen
+
+              if (questionForSecondSurvey.isNotEmpty) {
+                SecondSurveyBloc prova =
+                    BlocProvider.of<SecondSurveyBloc>(context);
+                prova.add(EventSelectQuestions(questionForSecondSurvey));
+
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => BlocProvider(
+                              create: (BuildContext context) => prova,
+                              child: Scaffold(
+                                body: WaitingScreen<SecondSurveyBloc,
+                                    SecondSurveyState>(
+                                  buildWhen: (state) =>
+                                      state.secondQuestions.isNotEmpty,
+                                  builder: (state) => SecondSurveyWidget(
+                                      secondSurveyQuestions:
+                                          state.secondQuestions),
+                                ),
+                              ),
+                            )));
+              }
             },
             child: Container(
               alignment: Alignment.center,
@@ -61,7 +87,7 @@ class MainSurveyWidget extends StatelessWidget {
               decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                   color: Colors.blueAccent),
-              child: const Text("Avanti"),
+              child: const Text("Continua"),
             ),
           ),
         )

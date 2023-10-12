@@ -1,13 +1,13 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:kaizen/models/second_survey/view/second_question_widget.dart';
 import '../models/main_survey/view/main_question_widget.dart';
 import '../models/second_survey/question.dart';
 
 class SecondSurveyWidget extends StatelessWidget {
+  final Map<String, List<Question>> secondSurveyQuestions;
 
-  final Map<String,List<Question>> secondSurveyQuestions;
-
-  const SecondSurveyWidget({super.key,required this.secondSurveyQuestions});
+  const SecondSurveyWidget({super.key, required this.secondSurveyQuestions});
 
   @override
   Widget build(BuildContext context) {
@@ -30,12 +30,19 @@ class SecondSurveyWidget extends StatelessWidget {
         ListView.separated(
           padding: const EdgeInsetsDirectional.all(30),
           physics: const BouncingScrollPhysics(),
-          shrinkWrap: true,
           itemCount: secondSurveyQuestions.length,
           itemBuilder: (BuildContext context, int index) {
-            return MainQuestionWidget(
-              index: index,
-              question: mainQuestions[index],
+            String key = secondSurveyQuestions.keys.elementAt(index);
+            List<Question>? questions = secondSurveyQuestions[key];
+
+            return ListTile(
+              title: Text(key),
+              subtitle: Column(
+                children: questions!
+                    .map((question) =>
+                        SecondQuestionWidget(mapKey: key, question: question))
+                    .toList(),
+              ),
             );
           },
           separatorBuilder: (BuildContext context, int index) {
