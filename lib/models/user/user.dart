@@ -1,17 +1,17 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:kaizen/models/common/reward/reward.dart';
 part 'user.g.dart';
 
 @JsonSerializable()
-class User {
-  int credits;
-  List<Reward> rewardsHistory = [];
+class User extends Equatable {
+  final int credits;
+  final List<Reward> rewardsHistory;
   // TODO: add tasksHistory when Task model exists
 
-  User({required this.credits, required this.rewardsHistory});
+  const User({required this.credits, required this.rewardsHistory});
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
@@ -25,17 +25,10 @@ class User {
   }
 
   @override
-  bool operator ==(Object other) {
-    return other is User &&
-        credits == other.credits &&
-        listEquals(rewardsHistory, other.rewardsHistory);
-  }
-
-  @override
-  int get hashCode => rewardsHistory.hashCode;
-
-  @override
   String toString() {
     return const JsonEncoder.withIndent('  ').convert(toJson());
   }
+
+  @override
+  List<Object?> get props => [credits, rewardsHistory];
 }

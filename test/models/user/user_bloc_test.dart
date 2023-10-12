@@ -13,15 +13,15 @@ void main() {
     });
 
     blocTest('Test add buy new Reward with enough credits',
-        build: () => UserBloc(User(credits: 150, rewardsHistory: [])),
+        build: () => UserBloc(const User(credits: 150, rewardsHistory: [])),
         act: (bloc) => bloc.add(BuyRewardEvent(reward_100)),
         expect: () => [
               User(credits: 50, rewardsHistory: [reward_100])
             ]);
 
     blocTest('Test add buy new Reward with NOT enough credits',
-        build: () => UserBloc(User(credits: 80, rewardsHistory: [])),
+        build: () => UserBloc(const User(credits: 80, rewardsHistory: [])),
         act: (bloc) => bloc.add(BuyRewardEvent(reward_100)),
-        expect: () => [User(credits: 80, rewardsHistory: [])]);
+        expect: () => [const User(credits: 80, rewardsHistory: [])]);
   });
 }

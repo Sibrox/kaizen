@@ -21,7 +21,7 @@ void main() {
   });
 
   test('Test user deserialization', () {
-    var user = User(credits: 150, rewardsHistory: []);
+    var user = const User(credits: 150, rewardsHistory: []);
     var jsonReward = user.toJson();
 
     assert(jsonReward["credits"] == 150);
@@ -30,24 +30,24 @@ void main() {
 
   test('Test user equal', () {
     const reward = Reward(title: "Test", price: 150, rating: 2);
-    var user1 = User(credits: 150, rewardsHistory: [reward]);
-    var user2 = User(credits: 150, rewardsHistory: [reward]);
+    var user1 = const User(credits: 150, rewardsHistory: [reward]);
+    var user2 = const User(credits: 150, rewardsHistory: [reward]);
 
     assert(user1 == user2);
   });
 
   test('Test user not equal', () {
     const reward = Reward(title: "Test", price: 150, rating: 2);
-    var user1 = User(credits: 150, rewardsHistory: [reward]);
-    var user2 = User(credits: 130, rewardsHistory: [reward]);
-    var user3 = User(credits: 130, rewardsHistory: []);
+    var user1 = const User(credits: 150, rewardsHistory: [reward]);
+    var user2 = const User(credits: 130, rewardsHistory: [reward]);
+    var user3 = const User(credits: 130, rewardsHistory: []);
 
     assert(user1 != user2);
     assert(user2 != user3);
   });
 
   test('Test add reward to User rewardsHistory', () {
-    var user = User(credits: 150, rewardsHistory: []);
+    var user = const User(credits: 150, rewardsHistory: []);
     assert(user.rewardsHistory.isEmpty);
 
     const newReward = Reward(
