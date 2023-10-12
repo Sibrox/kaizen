@@ -1,10 +1,11 @@
 import 'dart:convert';
 
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'reward.g.dart';
 
 @JsonSerializable()
-class Reward {
+class Reward extends Equatable {
   static const maxRating = 5;
   static const minRating = 0;
 
@@ -24,19 +25,10 @@ class Reward {
   Map<String, dynamic> toJson() => _$RewardToJson(this);
 
   @override
-  bool operator ==(Object other) {
-    return other is Reward &&
-        title == other.title &&
-        price == other.price &&
-        rating == other.rating &&
-        description == other.description;
-  }
-
-  @override
-  int get hashCode => title.hashCode;
-
-  @override
   String toString() {
     return const JsonEncoder.withIndent('  ').convert(toJson());
   }
+
+  @override
+  List<Object?> get props => [title, price, rating];
 }
