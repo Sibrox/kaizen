@@ -8,7 +8,9 @@ part of 'user.dart';
 
 User _$UserFromJson(Map<String, dynamic> json) => User(
       credits: json['credits'] as int,
-      rewardsHistory: json['rewardsHistory'],
+      rewardsHistory: (json['rewardsHistory'] as List<dynamic>)
+          .map((e) => Reward.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
