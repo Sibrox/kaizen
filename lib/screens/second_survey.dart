@@ -1,7 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kaizen/models/second_survey/view/second_question_widget.dart';
-import '../models/main_survey/view/main_question_widget.dart';
+import '../models/second_survey/bloc/second_survey_bloc.dart';
 import '../models/second_survey/question.dart';
 
 class SecondSurveyWidget extends StatelessWidget {
@@ -38,11 +39,20 @@ class SecondSurveyWidget extends StatelessWidget {
             return ListTile(
               title: Text(key),
               subtitle: Column(
-                children: questions!
-                    .map((question) =>
-                        SecondQuestionWidget(mapKey: key, question: question))
-                    .toList(),
-              ),
+                  children: questions!
+                      .asMap()
+                      .entries
+                      .map((entry) => SecondQuestionWidget(
+                            question: entry.value,
+                            onChanged: (value) {
+                              BlocProvider.of<SecondSurveyBloc>(context).add(
+                                  EventChangeValue(
+                                      key: key,
+                                      value: value,
+                                      index: entry.key));
+                            },
+                          ))
+                      .toList()),
             );
           },
           separatorBuilder: (BuildContext context, int index) {

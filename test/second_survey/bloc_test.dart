@@ -16,19 +16,19 @@ void main() {
             const SecondSurveyState({
               "Questo è un test di prova?": [
                 Question(
-                    text: "Credo proprio di si",
-                    max: 10,
-                    divisions: 10,
-                    index: 0),
-                Question(text: "Siamo nel Matrix?", max: 10, index: 1)
+                  text: "Credo proprio di si",
+                  max: 10,
+                  divisions: 10,
+                ),
+                Question(text: "Siamo nel Matrix?", max: 10)
               ],
               "Test": [
                 Question(
-                    text: "Credo proprio di si",
-                    max: 10,
-                    divisions: 10,
-                    index: 0),
-                Question(text: "Siamo nel Matrix?", max: 10, index: 1)
+                  text: "Credo proprio di si",
+                  max: 10,
+                  divisions: 10,
+                ),
+                Question(text: "Siamo nel Matrix?", max: 10)
               ]
             })
           ]);
@@ -46,22 +46,19 @@ void main() {
       expect: () {
         SecondSurveyState initState = const SecondSurveyState({
           "Questo è un test di prova?": [
-            Question(
-                text: "Credo proprio di si", max: 10, divisions: 10, index: 0),
-            Question(text: "Siamo nel Matrix?", max: 10, index: 1)
+            Question(text: "Credo proprio di si", max: 10, divisions: 10),
+            Question(text: "Siamo nel Matrix?", max: 10)
           ],
           "Test": [
-            Question(
-                text: "Credo proprio di si", max: 10, divisions: 10, index: 0),
-            Question(text: "Siamo nel Matrix?", max: 10, index: 1)
+            Question(text: "Credo proprio di si", max: 10, divisions: 10),
+            Question(text: "Siamo nel Matrix?", max: 10)
           ]
         });
 
         SecondSurveyState afterEventState = const SecondSurveyState({
           "Questo è un test di prova?": [
-            Question(
-                text: "Credo proprio di si", max: 10, divisions: 10, index: 0),
-            Question(text: "Siamo nel Matrix?", max: 10, index: 1)
+            Question(text: "Credo proprio di si", max: 10, divisions: 10),
+            Question(text: "Siamo nel Matrix?", max: 10)
           ],
         });
         return [initState, afterEventState];
@@ -78,27 +75,23 @@ void main() {
       expect: () {
         SecondSurveyState initState = const SecondSurveyState({
           "Questo è un test di prova?": [
-            Question(
-                text: "Credo proprio di si", max: 10, divisions: 10, index: 0),
-            Question(text: "Siamo nel Matrix?", max: 10, index: 1)
+            Question(text: "Credo proprio di si", max: 10, divisions: 10),
+            Question(text: "Siamo nel Matrix?", max: 10)
           ],
           "Test": [
-            Question(
-                text: "Credo proprio di si", max: 10, divisions: 10, index: 0),
-            Question(text: "Siamo nel Matrix?", max: 10, index: 1)
+            Question(text: "Credo proprio di si", max: 10, divisions: 10),
+            Question(text: "Siamo nel Matrix?", max: 10)
           ]
         });
 
         SecondSurveyState afterEventState = const SecondSurveyState({
           "Questo è un test di prova?": [
-            Question(
-                text: "Credo proprio di si", max: 10, divisions: 10, index: 0),
-            Question(text: "Siamo nel Matrix?", max: 10, index: 1)
+            Question(text: "Credo proprio di si", max: 10, divisions: 10),
+            Question(text: "Siamo nel Matrix?", max: 10)
           ],
           "Test": [
-            Question(
-                text: "Credo proprio di si", max: 10, divisions: 10, index: 0),
-            Question(text: "Siamo nel Matrix?", max: 10, value: 10, index: 1),
+            Question(text: "Credo proprio di si", max: 10, divisions: 10),
+            Question(text: "Siamo nel Matrix?", max: 10, value: 10),
           ]
         });
 

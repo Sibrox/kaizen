@@ -137,22 +137,22 @@ import 'package:test/test.dart' as test;
 /// [configuring tags]: https://github.com/dart-lang/test/blob/master/pkgs/test/doc/configuration.md#configuring-tags
 @isTest
 void blocTest<B extends BlocBase<State>, State>(
-    String description, {
-      required B Function() build,
-      FutureOr<void> Function()? setUp,
-      State Function()? seed,
-      dynamic Function(B bloc)? act,
-      Duration? wait,
-      int skip = 0,
-      dynamic Function()? expect,
-      dynamic Function(B bloc)? verify,
-      dynamic Function()? errors,
-      FutureOr<void> Function()? tearDown,
-      dynamic tags,
-    }) {
+  String description, {
+  required B Function() build,
+  FutureOr<void> Function()? setUp,
+  State Function()? seed,
+  dynamic Function(B bloc)? act,
+  Duration? wait,
+  int skip = 0,
+  dynamic Function()? expect,
+  dynamic Function(B bloc)? verify,
+  dynamic Function()? errors,
+  FutureOr<void> Function()? tearDown,
+  dynamic tags,
+}) {
   test.test(
     description,
-        () async {
+    () async {
       await testBloc<B, State>(
         setUp: setUp,
         build: build,
@@ -188,8 +188,8 @@ Future<void> testBloc<B extends BlocBase<State>, State>({
   var shallowEquality = false;
   final unhandledErrors = <Object>[];
   final localBlocObserver =
-  // ignore: deprecated_member_use
-  BlocOverrides.current?.blocObserver ?? Bloc.observer;
+      // ignore: deprecated_member_use
+      BlocOverrides.current?.blocObserver ?? Bloc.observer;
   final testObserver = _TestBlocObserver(
     localBlocObserver,
     unhandledErrors.add,
@@ -214,7 +214,7 @@ Future<void> testBloc<B extends BlocBase<State>, State>({
       await Future<void>.delayed(Duration.zero);
       await bloc.close();
       if (expect != null) {
-        final dynamic expected =await expect();
+        final dynamic expected = await expect();
         shallowEquality = '$states' == '$expected';
         try {
           test.expect(states, test.wrapMatcher(expected));

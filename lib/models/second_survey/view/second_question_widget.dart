@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kaizen/models/second_survey/bloc/second_survey_bloc.dart';
 import '../question.dart';
 
 class SecondQuestionWidget extends StatelessWidget {
-  final String mapKey;
   final Question question;
+  final void Function(double) onChanged;
 
   const SecondQuestionWidget(
-      {super.key, required this.mapKey, required this.question});
+      {super.key, required this.onChanged, required this.question});
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +33,7 @@ class SecondQuestionWidget extends StatelessWidget {
                 value: question.value,
                 max: question.max,
                 divisions: question.divisions,
-                onChanged: (double value) {
-                  BlocProvider.of<SecondSurveyBloc>(context).add(
-                      EventChangeValue(
-                          key: mapKey, value: value, index: question.index));
-                },
+                onChanged: onChanged,
               ),
             ),
             Expanded(flex: 1, child: Text("${question.value}")),

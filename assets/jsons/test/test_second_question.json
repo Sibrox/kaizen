@@ -3,26 +3,22 @@
     {
       "text": "Credo proprio di si",
       "max": 10,
-      "divisions": 10,
-      "index": 0
+      "divisions": 10
     },
     {
       "text": "Siamo nel Matrix?",
-      "max": 10,
-      "index": 1
+      "max": 10
     }
   ],
   "Test": [
     {
       "text": "Credo proprio di si",
       "max": 10,
-      "divisions": 10,
-      "index": 0
+      "divisions": 10
     },
     {
       "text": "Siamo nel Matrix?",
-      "max": 10,
-      "index": 1
+      "max": 10
     }
   ]
 }

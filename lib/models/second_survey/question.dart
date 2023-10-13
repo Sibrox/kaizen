@@ -9,21 +9,18 @@ class Question extends Equatable {
   final double value;
   final double max;
   final int? divisions;
-  final int index;
 
   const Question(
       {required this.text,
       required this.max,
-      required this.index,
       this.divisions = 1,
       this.value = 0});
 
-  Question copyWith({text, max, divisions, value, index}) {
+  Question copyWith({text, max, divisions, value}) {
     return Question(
         text: text ?? this.text,
         max: max ?? this.max,
         divisions: divisions ?? this.divisions,
-        index: index ?? this.index,
         value: value ?? this.value);
   }
 
@@ -31,5 +28,5 @@ class Question extends Equatable {
       _$QuestionFromJson(json);
 
   @override
-  List<Object?> get props => [text, value, max, divisions, index];
+  List<Object?> get props => [text, value, max, divisions];
 }

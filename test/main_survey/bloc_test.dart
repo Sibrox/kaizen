@@ -12,7 +12,7 @@ void main() {
     bloc.add(EventLoadInfos("assets/jsons/test/test_main_question.json"));
   }, expect: () async {
     List<MainQuestion> mainQuestions = [
-      MainQuestion(text: "Test", value: false)
+      const MainQuestion(text: "Test", value: false)
     ];
 
     return [MainSurveyState(mainQuestions)];
@@ -27,10 +27,10 @@ void main() {
       },
       expect: () {
         List<MainQuestion> mainQuestions = [
-          MainQuestion(text: "Test", value: false),
+          const MainQuestion(text: "Test", value: false),
         ];
         List<MainQuestion> mainQuestionsToggled = [
-          MainQuestion(text: "Test", value: true),
+          const MainQuestion(text: "Test", value: true),
         ];
         MainSurveyState initState = MainSurveyState(mainQuestions);
         MainSurveyState toggleState = MainSurveyState(mainQuestionsToggled);
@@ -46,12 +46,12 @@ void main() {
       },
       expect: () {
         List<MainQuestion> initQuestions = [
-          MainQuestion(text: "Test", value: false)
+          const MainQuestion(text: "Test", value: false)
         ];
         MainSurveyState initState = MainSurveyState(initQuestions);
         List<MainQuestion> postAddedQuestions = [
-          MainQuestion(text: "AddedTest", value: true),
-          MainQuestion(text: "Test", value: false)
+          const MainQuestion(text: "AddedTest", value: true),
+          const MainQuestion(text: "Test", value: false)
         ];
         MainSurveyState afterAddedState = MainSurveyState(postAddedQuestions);
         return [initState, afterAddedState];
@@ -67,14 +67,18 @@ void main() {
       },
       expect: () {
         List<MainQuestion> initState = [
-          MainQuestion(text: "Test", value: false),
+          const MainQuestion(text: "Test", value: false),
         ];
         List<MainQuestion> firstState = [
-          MainQuestion(text: "Test", value: true),
+          const MainQuestion(text: "Test", value: true),
         ];
         List<MainQuestion> secondState = [
-          MainQuestion(text: "Test", value: false),
+          const MainQuestion(text: "Test", value: false),
         ];
-        return [MainSurveyState(initState),MainSurveyState(firstState), MainSurveyState(secondState)];
+        return [
+          MainSurveyState(initState),
+          MainSurveyState(firstState),
+          MainSurveyState(secondState)
+        ];
       });
 }

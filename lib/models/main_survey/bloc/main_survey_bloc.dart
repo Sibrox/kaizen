@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:bloc/bloc.dart';
-import 'package:flutter/foundation.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../main_question.dart';
 
 part 'main_survey_event.dart';
@@ -9,12 +9,10 @@ part 'main_survey_event.dart';
 part 'main_survey_state.dart';
 
 class MainSurveyBloc extends Bloc<MainQuestionEvent, MainSurveyState> {
-  MainSurveyBloc() : super(MainSurveyState([])) {
+  MainSurveyBloc() : super(const MainSurveyState([])) {
     on<EventToggleMainQuestion>((event, emit) {
       List<MainQuestion> newState = List.from(state.mainQuestions);
-      newState[event.index] = MainQuestion(
-          text: newState[event.index].text,
-          value: !newState[event.index].value);
+      newState[event.index] = newState[event.index].toggle();
       emit(MainSurveyState(newState));
     });
     on<EventAddQuestion>((event, emit) {
@@ -23,17 +21,19 @@ class MainSurveyBloc extends Bloc<MainQuestionEvent, MainSurveyState> {
           newState.length - 1, MainQuestion(text: event.text, value: true));
       emit(MainSurveyState(newState));
     });
-    on<EventLoadInfos>((event, emit) async {
-      List<MainQuestion> mainQuestions = [];
+    on<EventLoadInfos>(
+      (event, emit) async {
+        List<MainQuestion> mainQuestions = [];
 
-      String json = await rootBundle.loadString(event.path);
-      List<dynamic> questions = jsonDecode(json);
+        String json = await rootBundle.loadString(event.path);
+        List<dynamic> questions = jsonDecode(json);
 
-      for (var question in questions) {
-        mainQuestions.add(MainQuestion.fromJson(question));
-      }
+        for (var question in questions) {
+          mainQuestions.add(MainQuestion.fromJson(question));
+        }
 
-      emit(MainSurveyState(mainQuestions));
-    },);
+        emit(MainSurveyState(mainQuestions));
+      },
+    );
   }
 }
