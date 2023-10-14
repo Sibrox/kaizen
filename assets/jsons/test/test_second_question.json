@@ -1,0 +1,24 @@
+{
+  "Questo è un test di prova?": [
+    {
+      "text": "Credo proprio di si",
+      "max": 10,
+      "divisions": 10
+    },
+    {
+      "text": "Siamo nel Matrix?",
+      "max": 10
+    }
+  ],
+  "Test": [
+    {
+      "text": "Credo proprio di si",
+      "max": 10,
+      "divisions": 10
+    },
+    {
+      "text": "Siamo nel Matrix?",
+      "max": 10
+    }
+  ]
+}
