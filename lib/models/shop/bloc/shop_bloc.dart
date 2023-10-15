@@ -16,6 +16,9 @@ class ShopBloc extends Bloc<ShopEvent, Shop> {
       emit(Shop.withNewReward(state, event.reward));
     });
 
-    on<DeleteRewardEvent>((event, emit) {});
+    on<DeleteRewardEvent>((event, emit) {
+      if (event.toRemove >= state.rewards.length) return;
+      emit(Shop.deleteReward(state, state.rewards[event.toRemove]));
+    });
   }
 }

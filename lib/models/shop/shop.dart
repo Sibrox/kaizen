@@ -32,12 +32,12 @@ class Shop extends Equatable {
         milestone: shop.milestone, rewards: [...shop.rewards, newReward]);
   }
 
-      
+  factory Shop.deleteReward(Shop shop, Reward toRemove) {
     return Shop(
-        milestone: newMilestone,
-        rewards: rewards);
+        milestone: shop.milestone,
+        rewards: shop.rewards.where((element) => element != toRemove).toList());
   }
-  
+
   @override
   List<Object?> get props => [milestone, rewards];
 }
