@@ -64,8 +64,8 @@ void main() {
       act: (bloc) => bloc.add(const SetMilestoneEvent(1)),
       expect: () => [
             const Shop(
-                milestone: Reward(title: "Test1", price: 10, rating: 1),
-                rewards: [Reward(title: "Test2", price: 20, rating: 2)])
+                milestone: Reward(title: "Test2", price: 20, rating: 2),
+                rewards: [Reward(title: "Test1", price: 10, rating: 1)])
           ]);
 
   blocTest("Test set milestone in a shop with milestone",
@@ -77,7 +77,7 @@ void main() {
       expect: () => [
             const Shop(
                 milestone: Reward(title: "Test2", price: 20, rating: 2),
-                rewards: [Reward(title: "Test1", price: 20, rating: 2)])
+                rewards: [Reward(title: "Test1", price: 10, rating: 1)])
           ]);
 
   blocTest("Test setMilestone with wrong index",
@@ -86,10 +86,6 @@ void main() {
               milestone: Reward(title: "Test1", price: 10, rating: 1),
               rewards: [Reward(title: "Test2", price: 20, rating: 2)])),
       act: (bloc) => bloc.add(const SetMilestoneEvent(2)),
-      expect: () => [
-            const Shop(
-                milestone: Reward(title: "Test1", price: 10, rating: 1),
-                rewards: [Reward(title: "Test2", price: 20, rating: 2)])
-          ]);
+      expect: () => []);
   
 }
