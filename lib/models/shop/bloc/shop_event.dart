@@ -5,9 +5,9 @@ sealed class ShopEvent {
 }
 
 class SetMilestoneEvent extends ShopEvent {
-  final Reward milestone;
+  final int index;
 
-  const SetMilestoneEvent(this.milestone);
+  const SetMilestoneEvent(this.index);
 }
 
 class NewRewardEvent extends ShopEvent {

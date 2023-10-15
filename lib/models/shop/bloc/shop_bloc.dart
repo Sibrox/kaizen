@@ -5,7 +5,8 @@ import 'package:kaizen/models/shop/shop.dart';
 part 'shop_event.dart';
 
 class ShopBloc extends Bloc<ShopEvent, Shop> {
-  ShopBloc() : super(const Shop(milestone: null, rewards: [])) {
+  ShopBloc({Shop? initialState})
+      : super(initialState ?? const Shop(milestone: null, rewards: [])) {
     on<SetMilestoneEvent>((event, emit) {});
 
     on<NewRewardEvent>((event, emit) {});
