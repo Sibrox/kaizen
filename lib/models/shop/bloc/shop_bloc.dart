@@ -8,11 +8,13 @@ class ShopBloc extends Bloc<ShopEvent, Shop> {
   ShopBloc({Shop? initialState})
       : super(initialState ?? const Shop(milestone: null, rewards: [])) {
     on<SetMilestoneEvent>((event, emit) {
-      if(event.index >=state.rewards.length) return;
+      if (event.index >= state.rewards.length) return;
       emit(Shop.withNewMilestone(state, state.rewards[event.index]));
     });
 
-    on<NewRewardEvent>((event, emit) {});
+    on<NewRewardEvent>((event, emit) {
+      emit(Shop.withNewReward(state, event.reward));
+    });
 
     on<DeleteRewardEvent>((event, emit) {});
   }

@@ -48,12 +48,7 @@ void main() {
             Reward(title: "Test2", price: 20, rating: 2)
           ])),
       act: (bloc) => bloc.add(const DeleteRewardEvent(2)),
-      expect: () => [
-            const Shop(milestone: null, rewards: [
-              Reward(title: "Test1", price: 10, rating: 1),
-              Reward(title: "Test2", price: 20, rating: 2)
-            ])
-          ]);
+      expect: () => []);
 
   blocTest("Test set Milestone in a Shop without milestone",
       build: () => ShopBloc(
@@ -87,5 +82,4 @@ void main() {
               rewards: [Reward(title: "Test2", price: 20, rating: 2)])),
       act: (bloc) => bloc.add(const SetMilestoneEvent(2)),
       expect: () => []);
-  
 }

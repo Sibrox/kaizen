@@ -17,12 +17,21 @@ class Shop extends Equatable {
   Map<String, dynamic> toJson() => _$ShopToJson(this);
 
   factory Shop.withNewMilestone(Shop shop, Reward newMilestone) {
+    var rewards =
+        shop.rewards.where((element) => element != newMilestone).toList();
 
-    var rewards = shop.rewards.where((element) => element != newMilestone).toList();
-    
-    if(shop.milestone != null) {
+    if (shop.milestone != null) {
       rewards.add(shop.milestone!);
     }
+
+    return Shop(milestone: newMilestone, rewards: rewards);
+  }
+
+  factory Shop.withNewReward(Shop shop, Reward newReward) {
+    return Shop(
+        milestone: shop.milestone, rewards: [...shop.rewards, newReward]);
+  }
+
       
     return Shop(
         milestone: newMilestone,
@@ -31,6 +40,4 @@ class Shop extends Equatable {
   
   @override
   List<Object?> get props => [milestone, rewards];
-
-
 }
