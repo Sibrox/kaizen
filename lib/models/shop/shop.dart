@@ -4,11 +4,11 @@ part 'shop.g.dart';
 
 @JsonSerializable()
 class Shop {
-  final Reward milestone;
+  final Reward? milestone;
   final List<Reward> rewards;
 
   const Shop({
-    required this.milestone,
+    this.milestone,
     required this.rewards,
   });
 
