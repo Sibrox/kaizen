@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kaizen/models/common/reward/reward.dart';
+import '../reward.dart';
 
 class RewardWidget extends StatelessWidget {
   const RewardWidget({super.key, required this.reward});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../user/user.dart';
+import '../../user/user.dart';
 import '../reward.dart';
 
 class MilestoneWidget extends StatelessWidget {
