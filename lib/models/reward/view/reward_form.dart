@@ -99,9 +99,9 @@ class _RewardFormState extends State<RewardForm> {
                           rating = value;
                         });
                       },
-                      min: 0,
-                      max: 5,
-                      divisions: 5,
+                      min: Reward.minRating.toDouble(),
+                      max: Reward.maxRating.toDouble(),
+                      divisions: Reward.maxRating,
                       label: "Rating: ${rating.toInt()}",
                     ),
                     Text(
