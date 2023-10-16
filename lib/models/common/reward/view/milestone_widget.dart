@@ -37,7 +37,7 @@ class MilestoneWidget extends StatelessWidget {
                       : user.credits / milestone.price,
                   backgroundColor: Colors.grey,
                 ),
-                Text("  ${milestone.price}/${user.credits}")
+                Text("${milestone.price}/${user.credits}")
               ],
             ),
           )
