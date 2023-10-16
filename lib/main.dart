@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kaizen/models/reward/view/reward_form_button.dart';
 import 'package:kaizen/models/second_survey/bloc/second_survey_bloc.dart';
 import 'package:kaizen/models/shop/bloc/shop_bloc.dart';
 import 'package:kaizen/screens/waiting_screen.dart';
