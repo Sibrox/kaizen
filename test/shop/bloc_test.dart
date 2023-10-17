@@ -1,5 +1,5 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:kaizen/models/common/reward/reward.dart';
+import 'package:kaizen/models/reward/reward.dart';
 import 'package:kaizen/models/shop/bloc/shop_bloc.dart';
 import 'package:kaizen/models/shop/shop.dart';
 

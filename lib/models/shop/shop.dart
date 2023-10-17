@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:kaizen/models/common/reward/reward.dart';
+import 'package:kaizen/models/reward/reward.dart';
 part 'shop.g.dart';
 
 @JsonSerializable()
