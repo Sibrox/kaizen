@@ -13,6 +13,7 @@ class ShopBloc extends Bloc<ShopEvent, Shop> {
     });
 
     on<NewRewardEvent>((event, emit) {
+      if (state.rewards.contains(event.reward)) return;
       emit(Shop.withNewReward(state, event.reward));
     });
 
