@@ -16,10 +16,11 @@ class ShopScreen extends StatefulWidget {
 class _ShopScreenState extends State<ShopScreen> {
   late bool isDragging;
   late bool inMilestone;
+  late bool inRemove;
 
   @override
   void initState() {
-    isDragging = inMilestone = false;
+    isDragging = inMilestone = inRemove = false;
     super.initState();
   }
 
@@ -52,12 +53,12 @@ class _ShopScreenState extends State<ShopScreen> {
                 onAccept: (int index) {
                   shopBloc.add(SetMilestoneEvent(index));
                 },
-                onMove: (details) {
+                onMove: (dragDetails) {
                   setState(() {
                     inMilestone = true;
                   });
                 },
-                onLeave: (details) {
+                onLeave: (dragDetails) {
                   setState(() {
                     inMilestone = false;
                   });
@@ -76,9 +77,9 @@ class _ShopScreenState extends State<ShopScreen> {
                           isDragging = true;
                         });
                       },
-                      onDragEnd: (dragDettails) {
+                      onDragEnd: (dragDetails) {
                         setState(() {
-                          isDragging = inMilestone = false;
+                          isDragging = inMilestone = inRemove = false;
                         });
                       },
                       dragAnchorStrategy: pointerDragAnchorStrategy,
@@ -104,6 +105,30 @@ class _ShopScreenState extends State<ShopScreen> {
                 },
               ),
             ),
+            DragTarget<int>(builder: (BuildContext context,
+                List<dynamic> accepted, List<dynamic> rejected) {
+              return Visibility(
+                visible: isDragging,
+                child: AnimatedContainer(
+                    width: MediaQuery.of(context).size.width,
+                    color: inRemove ? Colors.red : Colors.white,
+                    duration: const Duration(milliseconds: 500),
+                    child: const Icon(
+                      Icons.remove_circle_outlined,
+                      size: 70,
+                    )),
+              );
+            }, onAccept: (index) {
+              shopBloc.add(DeleteRewardEvent(index));
+            }, onMove: (dragDetails) {
+              setState(() {
+                inRemove = true;
+              });
+            }, onLeave: (dragDetails) {
+              setState(() {
+                inRemove = false;
+              });
+            }),
           ],
         );
       },
