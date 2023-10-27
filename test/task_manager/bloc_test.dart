@@ -67,7 +67,7 @@ void main() {
                 routine: Routine.weekly,
                 taskCredits: 20),
           ])),
-      act: (bloc) => bloc.add(const DeleteTaskEvent(1)),
+      act: (bloc) => bloc.add(const DeleteTaskEvent(0)),
       expect: () => [
             const TaskManager(tasks: [
               Task(
