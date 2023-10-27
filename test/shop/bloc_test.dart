@@ -82,4 +82,20 @@ void main() {
               rewards: [Reward(title: "Test2", price: 20, rating: 2)])),
       act: (bloc) => bloc.add(const SetMilestoneEvent(2)),
       expect: () => []);
+
+  blocTest(
+    "Add Reward in the Shop twice",
+    build: () => ShopBloc(),
+    act: (bloc) {
+      bloc.add(
+        const NewRewardEvent(Reward(title: "Title", price: 100, rating: 1)),
+      );
+      bloc.add(
+        const NewRewardEvent(Reward(title: "Title", price: 100, rating: 1)),
+      );
+    },
+    expect: () => [
+      const Shop(rewards: [Reward(title: "Title", price: 100, rating: 1)])
+    ],
+  );
 }
