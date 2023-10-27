@@ -68,7 +68,7 @@ void main() {
           initialState: const Shop(
               milestone: Reward(title: "Test1", price: 10, rating: 1),
               rewards: [Reward(title: "Test2", price: 20, rating: 2)])),
-      act: (bloc) => bloc.add(const SetMilestoneEvent(0)),
+      act: (bloc) => bloc.add(const SetMilestoneEvent(1)),
       expect: () => [
             const Shop(
                 milestone: Reward(title: "Test2", price: 20, rating: 2),
