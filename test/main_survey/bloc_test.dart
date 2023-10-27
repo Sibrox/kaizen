@@ -1,4 +1,4 @@
-import 'package:kaizen/utilities/bloc_test_custom.dart';
+import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kaizen/models/main_survey/bloc/main_survey_bloc.dart';
 import 'package:kaizen/models/main_survey/main_question.dart';
