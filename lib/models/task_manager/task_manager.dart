@@ -9,6 +9,10 @@ class TaskManager extends Equatable {
 
   const TaskManager({required this.tasks});
 
+  factory TaskManager.fromJson(Map<String, dynamic> json) =>
+      _$TaskManagerFromJson(json);
+  Map<String, dynamic> toJson() => _$TaskManagerToJson(this);
+
   factory TaskManager.withNewTask(TaskManager taskManager, Task newTask) =>
       TaskManager(tasks: [...taskManager.tasks, newTask]);
 
