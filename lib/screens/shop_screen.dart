@@ -14,9 +14,7 @@ class ShopScreen extends StatefulWidget {
 }
 
 class _ShopScreenState extends State<ShopScreen> {
-  late bool isDragging;
-  late bool inMilestone;
-  late bool inRemove;
+  late bool isDragging, inMilestone, inRemove;
 
   @override
   void initState() {
