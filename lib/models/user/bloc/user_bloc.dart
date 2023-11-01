@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kaizen/models/reward/reward.dart';
 import 'package:kaizen/models/user/user.dart';
-import 'package:kaizen/utilities/persistence/persistence.dart';
+import 'package:kaizen/utilities/persistence/persistence_manager.dart';
 
 part 'user_event.dart';
 

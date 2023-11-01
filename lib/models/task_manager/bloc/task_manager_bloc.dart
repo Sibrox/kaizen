@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kaizen/models/task/task.dart';
 import 'package:kaizen/models/task_manager/task_manager.dart';
-import 'package:kaizen/utilities/persistence/persistence.dart';
+import 'package:kaizen/utilities/persistence/persistence_manager.dart';
 
 part 'task_manager_event.dart';
 

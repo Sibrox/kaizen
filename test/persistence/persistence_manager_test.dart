@@ -2,9 +2,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:kaizen/models/reward/reward.dart';
 import 'package:kaizen/models/shop/bloc/shop_bloc.dart';
 import 'package:kaizen/models/shop/shop.dart';
+import 'package:kaizen/utilities/persistence/local_data_manager.dart';
 import 'package:path_provider_platform_interface/path_provider_platform_interface.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
-import 'package:kaizen/utilities/persistence/persistence.dart';
+import 'package:kaizen/utilities/persistence/persistence_manager.dart';
 
 const String kApplicationDocumentsPath = 'applicationDocumentsPath';
 
