@@ -35,6 +35,12 @@ class CounterTask extends Task implements Equatable {
         currentValue: task.currentValue + 1,
         isDone: task.currentValue + 1 < task.maxValue ? false : true);
   }
+
+  factory CounterTask.fromJson(Map<String, dynamic> json) =>
+      _$CounterTaskFromJson(json);
+  @override
+  Map<String, dynamic> toJson() => _$CounterTaskToJson(this);
+
   @override
   List<Object?> get props =>
       [title, description, routine, taskCredits, maxValue, currentValue];
