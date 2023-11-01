@@ -8,9 +8,9 @@ part of 'reward.dart';
 
 Reward _$RewardFromJson(Map<String, dynamic> json) => Reward(
       title: json['title'] as String,
-      description: json['description'] as String? ?? "",
       price: json['price'] as int,
       rating: json['rating'] as int,
+      description: json['description'] as String? ?? "",
     );
 
 Map<String, dynamic> _$RewardToJson(Reward instance) => <String, dynamic>{

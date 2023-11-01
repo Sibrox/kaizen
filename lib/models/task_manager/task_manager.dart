@@ -1,9 +1,7 @@
 import 'package:equatable/equatable.dart';
-import 'package:json_annotation/json_annotation.dart';
 import 'package:kaizen/models/task/task.dart';
 part 'task_manager.g.dart';
 
-@JsonSerializable()
 class TaskManager extends Equatable {
   final List<Task> tasks;
 
