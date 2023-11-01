@@ -4,10 +4,10 @@ abstract class TaskManagerEvent {
   const TaskManagerEvent();
 }
 
-class NewTaskEvent extends TaskManagerEvent {
+class AddTask extends TaskManagerEvent {
   final Task task;
 
-  const NewTaskEvent(this.task);
+  const AddTask(this.task);
 }
 
 class DeleteTaskEvent extends TaskManagerEvent {

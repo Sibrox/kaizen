@@ -7,7 +7,7 @@ part 'task_manager_event.dart';
 class TaskManagerBloc extends Bloc<TaskManagerEvent, TaskManager> {
   TaskManagerBloc({TaskManager? initialState})
       : super(initialState ?? const TaskManager(tasks: [])) {
-    on<NewTaskEvent>((event, emit) {
+    on<AddTask>((event, emit) {
       emit(TaskManager.withNewTask(state, event.task));
     });
 
