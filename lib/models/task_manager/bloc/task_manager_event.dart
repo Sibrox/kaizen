@@ -15,3 +15,9 @@ class DeleteTaskEvent extends TaskManagerEvent {
 
   const DeleteTaskEvent(this.toDelete);
 }
+
+class InteractEvent extends TaskManagerEvent {
+  final int index;
+
+  const InteractEvent(this.index);
+}

@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:kaizen/models/task/simple_task.dart';
 import 'package:kaizen/models/task/task.dart';
 part 'task_manager.g.dart';
 
@@ -20,6 +21,16 @@ class TaskManager extends Equatable {
     return TaskManager(
         tasks:
             taskManager.tasks.where((element) => element != toDelete).toList());
+  }
+
+  factory TaskManager.interactTask(TaskManager taskManager, int index) {
+    return TaskManager(
+        tasks: taskManager.tasks.asMap().entries.map((currentEntry) {
+      if (currentEntry.key == index) {
+        return currentEntry.value.interact();
+      }
+      return currentEntry.value;
+    }).toList());
   }
 
   @override
