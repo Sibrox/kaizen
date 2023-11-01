@@ -20,7 +20,12 @@ class TaskManagerScreen extends StatelessWidget {
             child: ListView.builder(
               itemCount: taskManagerBloc.state.tasks.length,
               itemBuilder: (BuildContext context, int index) {
-                return TaskWidget(task: taskManagerBloc.state.tasks[index]);
+                return GestureDetector(
+                    onTap: () {
+                      taskManagerBloc.add(InteractEvent(index));
+                    },
+                    child:
+                        TaskWidget(task: taskManagerBloc.state.tasks[index]));
               },
             ),
           ),

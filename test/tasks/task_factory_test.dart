@@ -1,8 +1,6 @@
-import 'dart:convert';
-
 import 'package:kaizen/models/task/counter_task.dart';
 import 'package:kaizen/models/task/routine.enum.dart';
-import 'package:kaizen/models/task/task.dart';
+import 'package:kaizen/models/task/simple_task.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -15,7 +13,7 @@ void main() {
           taskCredits: 5,
           maxValue: 10);
 
-      CounterTask factoryTask = CounterTask.interact(originalTask);
+      CounterTask factoryTask = originalTask.interact();
 
       expect(factoryTask.currentValue, equals(originalTask.currentValue + 1));
       expect(factoryTask.isDone, false);
@@ -30,7 +28,7 @@ void main() {
           maxValue: 10,
           currentValue: 10);
 
-      CounterTask factoryTask = CounterTask.interact(originalTask);
+      CounterTask factoryTask = originalTask.interact();
 
       expect(factoryTask.currentValue, equals(originalTask.currentValue + 1));
       expect(factoryTask.isDone, true);
@@ -39,14 +37,14 @@ void main() {
 
   group("Task factory", () {
     test('Test factory interact with a new Task', () {
-      const originalTask = Task(
+      const originalTask = SimpleTask(
         title: 'Task',
         description: 'This is a task',
         routine: Routine.daily,
         taskCredits: 5,
       );
 
-      Task factoryTask = Task.interact(originalTask);
+      SimpleTask factoryTask = originalTask.interact();
 
       expect(factoryTask.isDone, true);
     });

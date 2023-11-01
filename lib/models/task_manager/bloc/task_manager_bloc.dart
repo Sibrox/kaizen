@@ -18,5 +18,8 @@ class TaskManagerBloc extends Bloc<TaskManagerEvent, TaskManager> {
         emit(TaskManager.deleteTask(state, state.tasks[event.toDelete]));
       }
     });
+    on<InteractEvent>((event, emit) {
+      emit(TaskManager.interactTask(state, event.index));
+    });
   }
 }

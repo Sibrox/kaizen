@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'task.dart';
+part of 'simple_task.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Task _$TaskFromJson(Map<String, dynamic> json) => Task(
+SimpleTask _$SimpleTaskFromJson(Map<String, dynamic> json) => SimpleTask(
       title: json['title'] as String,
       description: json['description'] as String,
       routine: $enumDecode(_$RoutineEnumMap, json['routine']),
@@ -14,7 +14,8 @@ Task _$TaskFromJson(Map<String, dynamic> json) => Task(
       isDone: json['isDone'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$TaskToJson(Task instance) => <String, dynamic>{
+Map<String, dynamic> _$SimpleTaskToJson(SimpleTask instance) =>
+    <String, dynamic>{
       'title': instance.title,
       'description': instance.description,
       'routine': _$RoutineEnumMap[instance.routine]!,

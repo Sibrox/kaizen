@@ -25,15 +25,16 @@ class CounterTask extends Task implements Equatable {
             taskCredits: taskCredits,
             isDone: isDone);
 
-  factory CounterTask.interact(CounterTask task) {
+  @override
+  CounterTask interact() {
     return CounterTask(
-        title: task.description,
-        description: task.description,
-        routine: task.routine,
-        taskCredits: task.taskCredits,
-        maxValue: task.maxValue,
-        currentValue: task.currentValue + 1,
-        isDone: task.currentValue + 1 < task.maxValue ? false : true);
+        title: title,
+        description: description,
+        routine: routine,
+        taskCredits: taskCredits,
+        maxValue: maxValue,
+        currentValue: currentValue + 1,
+        isDone: currentValue + 1 < maxValue ? false : true);
   }
 
   factory CounterTask.fromJson(Map<String, dynamic> json) =>
@@ -44,4 +45,7 @@ class CounterTask extends Task implements Equatable {
   @override
   List<Object?> get props =>
       [title, description, routine, taskCredits, maxValue, currentValue];
+
+  @override
+  bool? get stringify => true;
 }

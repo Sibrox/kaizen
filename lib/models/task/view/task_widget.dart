@@ -22,7 +22,8 @@ class TaskWidget extends StatelessWidget {
               Text(task.title),
               Text(task.description),
               Text(task.routine.toString()),
-              Text('${task.taskCredits}')
+              Text('${task.taskCredits}'),
+              Text('${task.isDone}'),
             ],
           ),
         ],

@@ -8,7 +8,7 @@ part of 'task_manager.dart';
 
 TaskManager _$TaskManagerFromJson(Map<String, dynamic> json) => TaskManager(
       tasks: (json['tasks'] as List<dynamic>)
-          .map((e) => Task.fromJson(e as Map<String, dynamic>))
+          .map((e) => SimpleTask.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
