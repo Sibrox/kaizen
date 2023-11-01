@@ -37,7 +37,7 @@ void main() {
 
       PersistenceManager().saveData("shop", bloc.state.toJson());
       var loadedShop =
-          Shop.fromJson(await PersistenceManager().getDataBloc("shop"));
+          Shop.fromJson((await PersistenceManager().getDataBloc("shop"))!);
       expect(bloc.state == loadedShop, true);
     });
   });

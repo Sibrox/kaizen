@@ -19,7 +19,8 @@ class PersistenceManager {
 
   Future<bool> saveData(String key, Map<String, dynamic> value) async {
     data[key] = value;
-    return await LocalDataManager().write(data.toString());
+    final jsonData = const JsonEncoder.withIndent('  ').convert(value);
+    return await LocalDataManager().write(jsonData);
   }
 
   Future<void> loadData() async {
@@ -27,7 +28,7 @@ class PersistenceManager {
     data = jsonDecode(dataStr);
   }
 
-  Future<Map<String, dynamic>> getDataBloc(String key) async {
+  Future<Map<String, dynamic>?> getDataBloc(String key) async {
     return data[key];
   }
 }
