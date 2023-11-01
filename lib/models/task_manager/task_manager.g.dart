@@ -6,11 +6,8 @@ part of 'task_manager.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-TaskManager _$TaskManagerFromJson(Map<String, dynamic> json) => TaskManager(
-      tasks: (json['tasks'] as List<dynamic>)
-          .map((e) => Task.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
+TaskManager _$TaskManagerFromJson(Map<String, dynamic> json) =>
+    TaskManager(tasks: json['tasks'] as List<Task>);
 
 Map<String, dynamic> _$TaskManagerToJson(TaskManager instance) =>
     <String, dynamic>{
