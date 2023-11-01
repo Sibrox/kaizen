@@ -11,14 +11,25 @@ class Task extends Equatable {
   final String description;
   final Routine routine;
   final int taskCredits;
+  final bool isDone;
 
   const Task(
       {required this.title,
       required this.description,
       required this.routine,
-      required this.taskCredits});
+      required this.taskCredits,
+      this.isDone = false});
 
   factory Task.fromJson(Map<String, dynamic> json) => _$TaskFromJson(json);
+
+  factory Task.interact(Task task) {
+    return Task(
+        title: task.title,
+        description: task.description,
+        routine: task.routine,
+        taskCredits: task.taskCredits,
+        isDone: true);
+  }
 
   Map<String, dynamic> toJson() => _$TaskToJson(this);
 
