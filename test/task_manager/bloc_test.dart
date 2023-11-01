@@ -8,7 +8,7 @@ void main() {
   blocTest(
     "Test add Task to empty TaskManager",
     build: () => TaskManagerBloc(),
-    act: (bloc) => bloc.add(const NewTaskEvent(Task(
+    act: (bloc) => bloc.add(const AddTask(Task(
         title: "Title",
         description: "Description",
         routine: Routine.weekly,
@@ -33,7 +33,7 @@ void main() {
                 routine: Routine.daily,
                 taskCredits: 10)
           ])),
-      act: (bloc) => bloc.add(const NewTaskEvent(Task(
+      act: (bloc) => bloc.add(const AddTask(Task(
           title: "Title2",
           description: "Description",
           routine: Routine.weekly,
